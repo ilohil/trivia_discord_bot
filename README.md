@@ -2,6 +2,9 @@
 
 Trivia bot for Discord servers. Users can answer timed multiple-choice questions, track their scores, and view highscores. Built with Python, `trivia.py` and `discord.py`.
 
+![example_usage](https://github.com/user-attachments/assets/fc664c3e-5eef-443e-bfd5-46036e2232f0)
+
+
 ## Features
 
 - `/trivia` — Start a new trivia game with a multiple-choice question

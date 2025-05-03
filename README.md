@@ -19,7 +19,7 @@ Trivia bot for Discord servers. Users can answer timed multiple-choice questions
 
 ### Prerequisities
 
-You need to have your own Discord bot to setup Trivia bot locally. If creating Discord bots is unfamiliar to you you can use [this guide](https://realpython.com/how-to-make-a-discord-bot-python/#how-to-make-a-discord-bot-in-the-developer-portal) to help you setup a new bot and invite it to your server.
+Before setting up the trivia bot, you need to create your own Discord bot (if you haven't done so already). If creating Discord bots is unfamiliar to you you can use [this guide](https://realpython.com/how-to-make-a-discord-bot-python/#how-to-make-a-discord-bot-in-the-developer-portal) to help you setup a new bot and invite it to your server.
 
 ### 1. Clone the Repository
 
@@ -44,6 +44,12 @@ To invite your bot to your Discord server, visit the following URL and replace Y
 
     https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot+applications.commands&permissions=2147483648
 
+The permissions required for the bot are as follows:
+    - Send Messages: Required to send trivia questions and answers
+    - Embed Links: Needed to send questions and answers in embedded format.
+    - Manage Messages: Used to delete old messages during the trivia game.
+    - Attach Files: If the bot sends images as part of questions/answers (optional).
+
 Follow the prompts to invite the bot and grant it the necessary permissions.
 
 ### 5. Run the Bot
@@ -51,6 +57,16 @@ Follow the prompts to invite the bot and grant it the necessary permissions.
     python main.py
 
 The bot will start, and you should see it logging in to Discord in your terminal. Now you are ready to use the bot!
+
+## Using deployed bot
+
+If you want to use bot in your Discord server without local setup you can invite the bot from this link:
+
+        https://discord.com/oauth2/authorize?client_id=1368274154670915655&permissions=387136&integration_type=0&scope=bot
+
+Paste the link in your browser and select the server you want to invite the bot. Follow the prompts to invite the bot and grant it the necessary permissions.
+
+Note: The deployed bot might occasionally be unavailable due to server limitations. If you experience any issues, try again later.
 
 ## Licenses 
 

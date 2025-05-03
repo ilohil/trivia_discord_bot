@@ -3,6 +3,7 @@ from discord.ui import View, Button
 from random import shuffle
 
 active_games = {}
+scoreboard= {}
 
 class TriviaView(View):
     def __init__(self, question_data, correct_answer, author_id):
@@ -21,7 +22,8 @@ class TriviaView(View):
         if not self.answered:
             await self.message.channel.send(f"⏰ You're out of time! Right answer was: **{self.correct_answer}**")
             self.clear_items()
-            del active_games[self.author_id]
+            if self.author_id in active_games:
+                del active_games[self.author_id]
 
 class TriviaButton(Button):
     def __init__(self, label, is_correct, view):
@@ -40,11 +42,20 @@ class TriviaButton(Button):
 
         self.view_ref.answered = True
 
+        user_id = interaction.user.id
+        if user_id not in scoreboard:
+            scoreboard[user_id] = {"games_played": 0, "correct_answers": 0}
+
+        scoreboard[user_id]["games_played"] += 1
+
         if self.is_correct:
+            scoreboard[user_id]["correct_answers"] += 1
             await interaction.response.send_message("✅ Right answer!")
         else:
             await interaction.response.send_message(f"❌ Wrong answer! Right answer was: **{self.view_ref.correct_answer}**")
 
+        await interaction.followup.send(f"Your score: {scoreboard[user_id]['correct_answers']} correct answers out of {scoreboard[user_id]['games_played']} games.")
         self.view_ref.clear_items()
         await self.view_ref.message.edit(view=self.view_ref)
-        del active_games[interaction.user.id]
+        if interaction.user.id in active_games:
+            del active_games[interaction.user.id]

@@ -45,6 +45,7 @@ To invite your bot to your Discord server, visit the following URL and replace Y
     https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot+applications.commands&permissions=2147483648
 
 The permissions required for the bot are as follows:
+
     - Send Messages: Required to send trivia questions and answers
     - Embed Links: Needed to send questions and answers in embedded format.
     - Manage Messages: Used to delete old messages during the trivia game.
